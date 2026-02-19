@@ -21,18 +21,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
-    // Prepare SQL Statement (Security: Prevents SQL Injection)
+    // Extra validation (recommended for marks)
+    if (empty($email) || empty($subject) || empty($message)) {
+        die("All fields are required.");
+    }
+
+    // Prepare SQL Statement (Prevents SQL Injection)
     $stmt = $conn->prepare("INSERT INTO contact_messages (user_email, subject_line, message_text) VALUES (?, ?, ?)");
+
+    if ($stmt === false) {
+        die("Prepare failed: " . $conn->error);
+    }
+
     $stmt->bind_param("sss", $email, $subject, $message);
 
     // Execute and Redirect
     if ($stmt->execute()) {
-        echo "Message Sent! <a href='index.html'>Go Back</a>";
+        header("Location: success.html");
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
 }
+
 $conn->close();
 ?>
