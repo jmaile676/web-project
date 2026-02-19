@@ -26,28 +26,45 @@
             </div>
 
             <div class="card-body">
-                <form>
+                <!-- ✅ CONNECTED FORM -->
+                <form action="process_form.php" method="POST">
 
                     <!-- Email Input -->
                     <div class="mb-3">
                         <label for="emailInput" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                        <input type="email" 
+                               class="form-control" 
+                               id="emailInput" 
+                               name="email" 
+                               placeholder="name@example.com" 
+                               required>
                     </div>
 
                     <!-- Subject Line -->
                     <div class="mb-3">
                         <label for="subjectInput" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="subjectInput" placeholder="How can we help?">
+                        <input type="text" 
+                               class="form-control" 
+                               id="subjectInput" 
+                               name="subject" 
+                               placeholder="How can we help?" 
+                               required>
                     </div>
 
                     <!-- Message Area -->
                     <div class="mb-3">
                         <label for="messageInput" class="form-label">Message</label>
-                        <textarea class="form-control" id="messageInput" rows="3"></textarea>
+                        <textarea class="form-control" 
+                                  id="messageInput" 
+                                  name="message" 
+                                  rows="3" 
+                                  required></textarea>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-success w-100">Send Message</button>
+                    <button type="submit" class="btn btn-success w-100">
+                        Send Message
+                    </button>
 
                 </form>
             </div>
