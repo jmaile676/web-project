@@ -1,8 +1,8 @@
 <?php
 // 1. Database Connection Credentials
 $servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = "";     // Default XAMPP password is empty
+$username = "root";
+$password = "";
 $dbname = "web_project_db";
 
 // 2. Create Connection
@@ -15,18 +15,11 @@ if ($conn->connect_error) {
 
 // 4. Handle Form Submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Sanitize and Collect Data
+    
     $email = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
-    // Extra validation (recommended for marks)
-    if (empty($email) || empty($subject) || empty($message)) {
-        die("All fields are required.");
-    }
-
-    // Prepare SQL Statement (Prevents SQL Injection)
     $stmt = $conn->prepare("INSERT INTO contact_messages (user_email, subject_line, message_text) VALUES (?, ?, ?)");
 
     if ($stmt === false) {
@@ -35,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->bind_param("sss", $email, $subject, $message);
 
-    // Execute and Redirect
     if ($stmt->execute()) {
         header("Location: success.html");
         exit();
@@ -47,4 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-?>
