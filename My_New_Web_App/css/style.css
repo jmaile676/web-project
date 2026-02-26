@@ -1,0 +1,22 @@
+/* Prevent layout shifts */
+.navbar {
+    min-height: 56px;
+}
+
+.card {
+    min-height: 420px;
+}
+
+footer {
+    min-height: 60px;
+}
+
+/* Prevent font resizing shift */
+html {
+    font-size: 16px;
+}
+
+/* Smooth rendering */
+body {
+    margin: 0;
+}
