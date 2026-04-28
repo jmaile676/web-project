@@ -10,5 +10,25 @@
 
 # \* \*\*Screen Readers:\*\* Verified that the site structure supports screen reading software (e.g., using Alt text).
 
+
+
+## \## Third-Party Libraries
+
+## 
+
+## This project uses Bootstrap, licensed under the MIT License.
+
+## 
+
+## Bootstrap © The Bootstrap Authors
+
+## https://github.com/twbs/bootstrap
+
+# 
+
+
+
+
+
 # 
 
